@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# A change ratio, more or less.
+
+diffcnt() {
+    diff --suppress-common-lines --side-by-side -bB $1 $2 | wc -l
+}
+
+diffrat() {
+    [ "$1" = "$2" ] && return
+
+    local fs=`cat $1 | wc -l`
+    local ct=`diffcnt $1 $2`
+    printf "%1.3f\t%s\n" "$(echo "4k $ct $fs / p" | dc )" "$2"
+}
+
+main () {
+    local target=$1; shift
+    for other; do diffrat $target $other; done
+}
+
+main $@
