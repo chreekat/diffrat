@@ -28,5 +28,3 @@ Here we see datatable.js is pretty dang similar to exp.js. Good to know when
 trying to figure out somebody's crappy[1] code.
 
 [1] Never your own code, of course.
-
-
